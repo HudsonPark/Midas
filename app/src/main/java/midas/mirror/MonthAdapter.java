@@ -194,8 +194,10 @@ public class MonthAdapter extends BaseAdapter {
 
         // 배경색 설정
         if (position == getSelectedPosition()) {
+
             itemView.setBackgroundColor(Color.YELLOW);
         } else {
+
             itemView.setBackgroundColor(Color.rgb(27,36,65));
         }
 
@@ -231,7 +233,7 @@ public class MonthAdapter extends BaseAdapter {
                 return (30);
 
             default:
-                if(((year%4==0)&&(year%100!=0)) || (year%400==0) ) {
+                if(((year%4==0) && (year%100!=0)) || (year%400==0) ) {
                     return (29);   // 2월 윤년계산
                 } else {
                     return (28);

@@ -2,14 +2,14 @@ package midas.mirror;
 
 import java.io.Serializable;
 
-public class Selected_day implements Serializable {
+public class SelectDay implements Serializable {
 
     String selected_day;
     String title;
 
-    public Selected_day(){}
+    public SelectDay(){}
 
-    public Selected_day(String selected_day, String title) {
+    public SelectDay(String selected_day, String title) {
         this.selected_day = selected_day;
         this.title = title;
     }

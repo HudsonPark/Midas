@@ -17,16 +17,16 @@ import java.util.ArrayList;
 public class ListActivity extends AppCompatActivity implements Serializable {
 
     final int ADD_REQUEST_CODE = 1001;
-    ListView listView;
-    ListAdapter adapter;
-    CalListItem item;
-    TextView tv_date;
-    TextView tv_notify;
-    Button btn_setting;
-    Button btn_back;
+    private ListView listView;
+    private ListAdapter adapter;
+    private CalListItem item;
+    private TextView tv_date;
+    private TextView tv_notify;
+    private Button btn_setting;
+
     // SettingActivity로 이동하는 인텐트
     Intent intent;
-    Selected_day sd = new Selected_day();
+    SelectDay selectDay = new SelectDay();
     ArrayList<CalListItem> Items = new ArrayList<CalListItem>();
 
     @Override
@@ -37,7 +37,7 @@ public class ListActivity extends AppCompatActivity implements Serializable {
         initView();
         // 해당 날짜 텍스트 뷰에 출력
         intent = getIntent();
-        final Selected_day sd = (Selected_day) intent.getSerializableExtra("selected_day");
+        final SelectDay sd = (SelectDay) intent.getSerializableExtra("selected_day");
         Log.d("sss",sd.getSelected_day());
         tv_date.setText(sd.getSelected_day());
 
@@ -80,22 +80,10 @@ public class ListActivity extends AppCompatActivity implements Serializable {
                     startActivityForResult(intent,ADD_REQUEST_CODE);
             }
         });
-
-        // back 버튼 클릭시
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // MainActivity로 이동하는 인텐트
-                intent = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
     }
 
     private void initView() {
         btn_setting = findViewById(R.id.btn_setting);
-        btn_back = findViewById(R.id.btn_back);
         tv_date = findViewById(R.id.tv_date);
         tv_notify = findViewById(R.id.tv_notify);
         listView = findViewById(R.id.listView);
@@ -107,10 +95,10 @@ public class ListActivity extends AppCompatActivity implements Serializable {
             switch (requestCode){
                 // SettingActivity에서 정보 입력하고 되돌아올 경우
                 case ADD_REQUEST_CODE :
-                    sd = (Selected_day) data.getSerializableExtra("item");
-                    tv_date.setText(sd.getSelected_day());
+                    selectDay = (SelectDay) data.getSerializableExtra("item");
+                    tv_date.setText(selectDay.getSelected_day());
                     item = new CalListItem();
-                    item.setTitle(sd.getTitle());
+                    item.setTitle(selectDay.getTitle());
                     break;
             }
 
