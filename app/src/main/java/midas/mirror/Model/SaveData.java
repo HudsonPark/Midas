@@ -1,6 +1,6 @@
-package midas.mirror;
+package midas.mirror.Model;
 
-public class SettingVO {
+public class SaveData {
 
     String title;
     String date;
@@ -8,9 +8,9 @@ public class SettingVO {
     String loc;
     String content;
 
-    public SettingVO(){}
+    public SaveData(){}
 
-    public SettingVO(String title, String date, String time, String loc, String content){
+    public SaveData(String title, String date, String time, String loc, String content){
         this.title = title;
         this.date = date;
         this.time = time;
